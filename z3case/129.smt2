@@ -1,0 +1,13 @@
+(set-logic QF_NRA)
+(set-option :nlsat.factor true)
+(set-option :nlsat.inline_vars false)
+(set-option :nlsat.seed 10)
+(set-option :nlsat.minimize_conflicts false)
+
+(declare-fun p () Real)
+(declare-fun q () Real)
+(declare-fun r () Real)
+(assert (= (exp p) (+ q q)))
+(assert (and (< (sqrt q) r) (> (sin p) (cos r))))
+(assert (or (<= p q) (>= r p)))
+(check-sat)

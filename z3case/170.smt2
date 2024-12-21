@@ -1,0 +1,15 @@
+(set-logic HORN)
+(set-option :fp.spacer.iuc 2)
+(set-option :fp.spacer.iuc.arith 3)
+(set-option :fp.spacer.push_pob_max_depth 5)
+(set-option :fp.datalog.default_table_checked true)
+(set-option :fp.xform.array_blast true)
+
+(declare-rel G (Int))
+(declare-rel H (Int Int))
+(declare-var r Int)
+(declare-var s Int)
+
+(rule (=> (G r) (H r (mod r 4))))
+(rule (=> (and (H r s) (< s 2)) (G (+ s 1))))
+(query H :print-answer true)

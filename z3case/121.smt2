@@ -1,0 +1,12 @@
+(set-logic QF_NRA)
+(set-option :rcf.initial_precision 32)
+(set-option :rcf.use_prem true)
+(set-option :rcf.max_precision 150)
+
+(declare-fun a () Real)
+(declare-fun b () Real)
+(declare-fun c () Real)
+(assert (and (> (* a a) b) (< (cos a) c)))
+(assert (or (>= (tan c) (sin b)) (= a c)))
+(assert (not (and (> b 0) (= a (exp c)))))
+(check-sat)

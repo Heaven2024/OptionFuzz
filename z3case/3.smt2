@@ -1,0 +1,8 @@
+(set-logic QF_BV)
+(set-option :produce-models true)
+(declare-fun x () (_ BitVec 8))
+(declare-fun y () (_ BitVec 16))
+(assert (= (concat x x) y))
+(assert (= (bvand x ((_ extract 7 0) y)) x))
+(check-sat)
+(get-model)

@@ -1,0 +1,13 @@
+(set-logic QF_BV)
+(set-option :parallel.conquer.delay 7)
+(set-option :parallel.threads.max 16)
+(set-option :parallel.simplify.exp 2.0)
+
+(declare-fun r () (_ BitVec 128))
+(declare-fun s () (_ BitVec 128))
+(declare-fun t () (_ BitVec 128))
+(assert (bvxor r (bvlshr s #x0008)))
+(assert (= (bvsge (bvnot s) r)))
+(assert (or (bvult r t) (bvsge s t)))
+(assert (bvule (bvor t (bvand r s)) #xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF))
+(check-sat)

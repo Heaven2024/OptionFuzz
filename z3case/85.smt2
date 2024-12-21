@@ -1,0 +1,11 @@
+(set-option :pp.decimal true)
+(set-option :pp.decimal_precision 5)
+(set-option :pp.pretty_proof false)
+
+(declare-fun a () Real)
+(declare-fun b () Real)
+(declare-fun c () Real)
+(assert (or (= (* a a) b) (> b c)))
+(assert (< (+ b c) (* 10 a)))
+(assert (not (= a 0)))
+(check-sat)

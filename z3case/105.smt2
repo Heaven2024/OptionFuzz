@@ -1,0 +1,12 @@
+(set-logic QF_BV)
+(set-option :parallel.conquer.batch_size 50)
+(set-option :parallel.simplify.restart.max 1500)
+(set-option :parallel.threads.max 12)
+
+(declare-fun x () (_ BitVec 64))
+(declare-fun y () (_ BitVec 64))
+(declare-fun z () (_ BitVec 64))
+(assert (bvsle (bvadd x y) (bvsub z (bvmul y #x0A))))
+(assert (bvxnor x y) (bvneg z))
+(assert (bvsge (bvsub #xABCDEF03 y) x))
+(check-sat)

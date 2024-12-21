@@ -1,0 +1,13 @@
+(set-logic QF_NRA)
+(set-option :nlsat.check_lemmas true)
+(set-option :nlsat.factor false)
+(set-option :nlsat.inline_vars true)
+(set-option :nlsat.lazy 2)
+
+(declare-fun x () Real)
+(declare-fun y () Real)
+(declare-fun z () Real)
+(assert (> (+ x (* y y)) (* z z)))
+(assert (< (* x x) (+ y z)))
+(assert (>= (exp x) (log z)))
+(check-sat)

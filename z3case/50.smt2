@@ -1,0 +1,8 @@
+(set-option :sat.lookahead.delta_fraction 0.9)
+(set-option :sat.elim_vars true)
+(set-logic QF_AUFLIA)
+(declare-fun a () (Array Int Int))
+(declare-fun i () Int)
+(assert (> (select a i) 0))
+(assert (< i 10))
+(check-sat)

@@ -1,0 +1,11 @@
+(set-logic QF_BV)
+(set-option :parallel.conquer.delay 5)
+(set-option :parallel.threads.max 4)
+(set-option :parallel.enable true)
+
+(declare-fun r () (_ BitVec 8))
+(declare-fun s () (_ BitVec 8))
+(assert (bvule r s))
+(assert (bvsge (bvsub s r) #x01))
+(assert (bvxnor r (bvashr s #x02)) #xFF)
+(check-sat)

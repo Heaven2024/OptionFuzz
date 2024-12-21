@@ -1,0 +1,12 @@
+(set-logic QF_NRA)
+(set-option :nlsat.max_memory 1024)
+(set-option :nlsat.shuffle_vars true)
+(set-option :nlsat.simplify_conflicts false)
+
+(declare-fun u () Real)
+(declare-fun v () Real)
+(declare-fun w () Real)
+(assert (or (and (> (sin u) v) (< (exp w) u)) (= v w)))
+(assert (not (= (* u w) v)))
+(assert (>= (log u) (sqrt v)))
+(check-sat)

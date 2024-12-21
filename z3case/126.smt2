@@ -1,0 +1,13 @@
+(set-logic QF_NRA)
+(set-option :nlsat.max_conflicts 1000)
+(set-option :nlsat.minimize_conflicts true)
+(set-option :nlsat.randomize false)
+(set-option :nlsat.seed 42)
+
+(declare-fun a () Real)
+(declare-fun b () Real)
+(declare-fun c () Real)
+(assert (= (* a a) b))
+(assert (or (> (* b 2) a) (<= a c)))
+(assert (and (<= (tan c) (sin b)) (= a c)))
+(check-sat)

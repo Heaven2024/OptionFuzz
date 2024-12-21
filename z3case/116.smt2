@@ -1,0 +1,12 @@
+(set-logic QF_NRA)
+(set-option :algebraic.factor_num_primes 3)
+(set-option :algebraic.factor_search_size 4000)
+(set-option :algebraic.factor false)
+
+(declare-fun a () Real)
+(declare-fun b () Real)
+(declare-fun c () Real)
+(assert (or (= (+ (* a a) (* b b)) (* c c)) (<= a b)))
+(assert (> (* b 2) a))
+(assert (not (= (sqrt c) b)))
+(check-sat)

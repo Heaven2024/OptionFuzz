@@ -1,0 +1,12 @@
+(set-logic QF_NRA)
+(set-option :rcf.clean_denominators true)
+(set-option :rcf.max_precision 100)
+(set-option :rcf.initial_precision 28)
+
+(declare-fun p () Real)
+(declare-fun q () Real)
+(declare-fun r () Real)
+(assert (>= (- (sqrt p) (exp q)) r))
+(assert (or (= (+ p q) (sin r)) (> q r)))
+(assert (and (< p 1.0) (not (= r (sqrt q)))))
+(check-sat)

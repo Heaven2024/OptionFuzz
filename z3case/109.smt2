@@ -1,0 +1,12 @@
+(set-logic QF_UF)
+(set-option :nnf.ignore_labels true)
+(set-option :nnf.max_memory 1024)
+(set-option :nnf.mode skolem)
+
+(declare-fun a () Bool)
+(declare-fun b () Bool)
+(declare-fun c () Bool)
+(assert (or (and a (not b)) (=> c (not a))))
+(assert (or (and b c) (not (xor a c))))
+(assert (not (or (and a b) (or (not c) a))))
+(check-sat)

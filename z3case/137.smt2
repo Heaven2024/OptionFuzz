@@ -1,0 +1,13 @@
+(set-logic QF_NRA)
+(set-option :nlsat.inline_vars true)
+(set-option :nlsat.log_lemmas false)
+(set-option :nlsat.lazy 0)
+(set-option :nlsat.shuffle_vars true)
+
+(declare-fun m () Real)
+(declare-fun n () Real)
+(declare-fun o () Real)
+(assert (and (= (tan m) (sqrt n)) (> o m)))
+(assert (or (= n n) (and (< o o) (exp m))))
+(assert (not (>= (sin m) (cos n))))
+(check-sat)

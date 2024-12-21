@@ -1,0 +1,7 @@
+(set-option :sat.phase.sticky)
+(set-logic QF_NRA)
+(declare-fun x () Real)
+(declare-fun y () Real)
+(assert (> (* x x) y))
+(assert (< (+ x y) 1.0))
+(check-sat)

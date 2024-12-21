@@ -1,0 +1,8 @@
+(set-option :produce-models true)
+(declare-fun a () (Array Int String))
+(declare-fun i () Int)
+(declare-fun s () String)
+(assert (= (select a i) (str.++ "prefix_" s "_suffix")))
+(assert (= (str.len (select a (+ i 1))) (+ i 10)))
+(check-sat)
+(get-model)

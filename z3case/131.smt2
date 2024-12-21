@@ -1,0 +1,13 @@
+(set-logic QF_NRA)
+(set-option :nlsat.max_conflicts 500)
+(set-option :nlsat.max_memory 4096)
+(set-option :nlsat.reorder true)
+(set-option :nlsat.seed 123)
+
+(declare-fun a () Real)
+(declare-fun b () Real)
+(declare-fun c () Real)
+(assert (or (> (* a a) (* b b)) (< c a)))
+(assert (and (= (+ a b) c) (>= b c)))
+(assert (<= (cos a) (sin b)))
+(check-sat)

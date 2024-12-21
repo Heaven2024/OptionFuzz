@@ -1,0 +1,15 @@
+(set-logic HORN)
+(set-option :fp.datalog.generate_explanations true)
+(set-option :fp.datalog.default_table bitvector)
+(set-option :fp.spacer.min_level 1)
+(set-option :fp.spacer.reach_dnf true)
+(set-option :fp.spacer.q3.qgen.normalize true)
+
+(declare-rel E (Int Int))
+(declare-rel F (Int))
+(declare-var p Int)
+(declare-var q Int)
+
+(rule (=> (E p q) (F q)))
+(rule (=> (and (F p) (>= p 0)) (E p (mod p 3))))
+(query E :print-answer true)

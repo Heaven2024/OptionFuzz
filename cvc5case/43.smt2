@@ -1,0 +1,15 @@
+(set-option :re-elim on)
+(set-option :strings-regexp-inclusion true)
+(set-option :strings-eager-len-re false)
+(set-logic QF_SLIA)
+(declare-fun s () String)
+(declare-fun t () String)
+(declare-fun u () String)
+(assert (str.in_re s (re.++ (re.+ (re.range "A" "Z"))
+                            (re.+ (re.range "0" "9"))
+                            (re.+ (re.range "a" "z")))))
+
+
+(assert (= (+ (str.len s) (str.len u)) (* 2 (str.len t))))
+(check-sat)
+(get-model)

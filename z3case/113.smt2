@@ -1,0 +1,11 @@
+(set-logic QF_LIA)
+(set-option :nnf.max_memory 512)
+(set-option :nnf.ignore_labels true)
+
+(declare-fun m () Int)
+(declare-fun n () Int)
+(declare-fun o () Int)
+(assert (=> (and (= m n) (> n 0)) (exists ((t Int)) (= t (+ m o)))))
+(assert (or (and (exists ((u Int)) (= u m)) (forall ((v Int)) (= v n))), (=> m n)))
+(assert (not (exists ((w Int)) (and (< w o) (forall ((x Int)) (< x w))))))
+(check-sat)

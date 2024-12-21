@@ -1,0 +1,12 @@
+(set-logic QF_NRA)
+(set-option :nlsat.minimize_conflicts true)
+(set-option :nlsat.simplify_conflicts true)
+(set-option :nlsat.max_conflicts 2000)
+
+(declare-fun u () Real)
+(declare-fun v () Real)
+(declare-fun w () Real)
+(assert (= (+ (tan u) (cos v)) (sqrt w)))
+(assert (and (<= (log u) (exp v)) (> w u)))
+(assert (or (>= w v) (< v u)))
+(check-sat)

@@ -1,0 +1,11 @@
+(set-logic QF_NRA)
+(set-option :algebraic.min_mag 18)
+(set-option :algebraic.zero_accuracy 8)
+
+(declare-fun p () Real)
+(declare-fun q () Real)
+(declare-fun r () Real)
+(assert (= (* p p p) (+ (* q q q) (* r r r))))
+(assert (or (and (> p 0) (= (cos q) (sin r))) (< q r)))
+(assert (not (or (and (= p q) (not (< r 1.0))))))
+(check-sat)

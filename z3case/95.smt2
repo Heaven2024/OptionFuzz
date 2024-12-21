@@ -1,0 +1,13 @@
+(set-logic QF_BV)
+(set-option :opt.priority box)
+(set-option :opt.maxres.maximize_assignment true)
+(set-option :opt.rlimit 500)
+
+(declare-fun u () (_ BitVec 8))
+(declare-fun v () (_ BitVec 8))
+(declare-fun w () (_ BitVec 8))
+(assert (bvuge (bvand u #b11110000) v))
+(assert (bvult (bvadd v #x1A) (bvmul w #x02)))
+(assert (bvsge w (bvneg u)))
+(assert (bvslt (bvor u v) w))
+(check-sat)

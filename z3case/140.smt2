@@ -1,0 +1,20 @@
+(set-logic QF_NIA)
+(set-option :nlsat.check-lemmas true)
+(set-option :factor true)
+(set-option :max_conflicts 1000)
+(set-option :randomize true)
+
+(declare-const x Int)
+(declare-const y Int)
+(declare-const z Int)
+(declare-const w Int)
+
+(assert (> x 0))
+(assert (> y 0))
+(assert (= z (+ x y)))
+(assert (= w (* x y)))
+(assert (= z 10))
+(assert (> w 5))
+
+(check-sat)
+(get-model)

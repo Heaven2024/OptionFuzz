@@ -1,0 +1,15 @@
+(set-logic HORN)
+(set-option :fp.spacer.dump_benchmarks true)
+(set-option :fp.spacer.dump_threshold 10.0)
+(set-option :fp.spacer.use_map_names true)
+(set-option :fp.spacer.gg.concretize true)
+(set-option :fp.spacer.gg.subsume true)
+
+(declare-rel C (Int Int))
+(declare-rel D (Int))
+(declare-var m Int)
+(declare-var n Int)
+
+(rule (=> (and (C m n) (= (+ m n) 5)) (D n)))
+(rule (=> (D m) (C n (+ n 1))))
+(query D :print-answer true)

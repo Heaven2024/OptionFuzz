@@ -1,0 +1,13 @@
+(set-option :sls.early_prune false)
+(set-option :sls.paws_init 80)
+(set-option :sls.rescore true)
+(set-option :sls.scale_unsat 0.6)
+(set-option :sls.walksat_repick true)
+(set-logic QF_BV)
+(declare-fun x () (_ BitVec 6))
+(declare-fun y () (_ BitVec 6))
+(assert (= (bvudiv x y) (bvurem y x)))
+
+(assert (= (bvmul (bvadd x y) (bvsub x y)) (bvmul x x)))
+(check-sat)
+(get-model)

@@ -1,0 +1,11 @@
+
+(set-logic QF_SLIA)
+(declare-fun s () String)
+(declare-fun t () String)
+(assert (distinct s t))
+(assert (= (str.len s) (str.len t)))
+(assert (str.in_re s (re.+ (re.range "A" "Z"))))
+(assert (str.in_re t (re.+ (re.range "a" "z"))))
+(assert (= (str.to_lower s) (str.to_upper t)))
+(check-sat)
+(get-model)

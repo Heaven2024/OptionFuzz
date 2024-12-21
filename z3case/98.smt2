@@ -1,0 +1,12 @@
+(set-logic QF_FP)
+(set-option :opt.enable_core_rotate false)
+(set-option :opt.maxres.pivot_on_correction_set true)
+
+(declare-fun x () Real)
+(declare-fun y () Real)
+(declare-fun z () Real)
+(assert (fp.gt_RNE (fp.add_RNE x y) (fp.mul_RNE y z)))
+(assert (fp.leq_RNE (fp.sub_RNE z y) x))
+(assert (or (fp.isInfinite x) (fp.isPositive z)))
+(assert (= (fp.sqrt_RNE x) y))
+(check-sat)

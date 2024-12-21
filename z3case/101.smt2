@@ -1,0 +1,11 @@
+(set-logic QF_BV)
+(set-option :parallel.simplify.inprocess.max 5)
+(set-option :parallel.simplify.max_conflicts 10000)
+(set-option :parallel.simplify.restart.max 2000)
+
+(declare-fun p () (_ BitVec 64))
+(declare-fun q () (_ BitVec 64))
+(assert (bvult (bvadd p (bvnot q)) p))
+(assert (= (bvor p q) #xFFFFFFFFFFFFFFFF))
+(assert (bvule (bvneg q) p))
+(check-sat)

@@ -1,0 +1,10 @@
+(set-option :sat.local_search_threads 3)
+(set-option :sat.local_search true)
+
+(declare-fun arr () (Array (_ BitVec 8) (_ BitVec 32)))
+(declare-fun x () (_ BitVec 8))
+(declare-fun y () (_ BitVec 32))
+(assert (= (select arr x) y))
+(assert (bvult x #xA0))
+(assert (bvugt y #x00010000))
+(check-sat)

@@ -1,0 +1,12 @@
+(set-logic QF_BV)
+(set-option :parallel.enable true)
+(set-option :parallel.conquer.restart.max 3)
+(set-option :parallel.simplify.inprocess.max 8)
+
+(declare-fun a () (_ BitVec 32))
+(declare-fun b () (_ BitVec 32))
+(declare-fun c () (_ BitVec 32))
+(assert (bvult (bvadd a b) (bvmul c #x00000004)))
+(assert (= (bvor b c) (bvnor a #xFFFFFFFF)))
+(assert (bvuge (bvashr c #x02) b))
+(check-sat)

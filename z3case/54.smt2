@@ -1,0 +1,5 @@
+(set-option :sat.lookahead.delta_fraction 0.99)
+(set-option :sat.max_memory 2000)
+(declare-fun f (Int) Int)
+(declare-fun x () Int)
+(check-sat)

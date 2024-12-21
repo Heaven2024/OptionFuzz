@@ -1,0 +1,11 @@
+(set-logic QF_BV)
+(set-option :opt.maxres.hill_climb true)
+(set-option :opt.enable_core_rotate true)
+(set-option :opt.maxres.max_core_size 5)
+
+(declare-fun u () (_ BitVec 8))
+(declare-fun v () (_ BitVec 8))
+(assert (= u #xFF))
+(assert (bvule v (bvadd u #x01)))
+(assert (bvslt (bvsub v u) #x10))
+(check-sat)

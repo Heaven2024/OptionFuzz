@@ -1,0 +1,12 @@
+(set-logic QF_UF)
+(set-option :opt.solution_prefix "output_")
+(set-option :opt.timeout 10000)
+
+(declare-fun p () Bool)
+(declare-fun q () Bool)
+(declare-fun r () Bool)
+(assert (= (ite p q r) (and (not p) (or q r))))
+(assert (distinct p r))
+(assert (and (or (not q) p) (not (and q r))))
+(assert (implies p (= q r)))
+(check-sat)

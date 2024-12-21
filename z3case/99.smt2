@@ -1,0 +1,11 @@
+(set-logic QF_BV)
+(set-option :parallel.enable true)
+(set-option :parallel.threads.max 8)
+(set-option :parallel.conquer.backtrack_frequency 20)
+
+(declare-fun a () (_ BitVec 16))
+(declare-fun b () (_ BitVec 16))
+(assert (bvult (bvor a #xFF00) b))
+(assert (= b (bvand a #x00FF)))
+(assert (bvuge (bvshl a #x0002) b))
+(check-sat)

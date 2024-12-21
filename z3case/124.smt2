@@ -1,0 +1,12 @@
+(set-logic QF_NRA)
+(set-option :rcf.max_precision 80)
+(set-option :rcf.initial_precision 30)
+(set-option :rcf.clean_denominators false)
+
+(declare-fun u () Real)
+(declare-fun v () Real)
+(declare-fun w () Real)
+(assert (= (* 3.5 u) (cos v)))
+(assert (and (= w (+ v u)) (> (tan u) v)))
+(assert (or (<= (exp w) u) (> v w)))
+(check-sat)

@@ -1,0 +1,10 @@
+
+opfuzz code coverage:
+Combining tracefiles.
+Reading tracefile cover-run0.info
+
+typefuzz code coverage:
+Combining tracefiles.
+Reading tracefile cover-run0.info
+
+yinyang code coverage:

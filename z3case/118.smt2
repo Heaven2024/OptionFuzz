@@ -1,0 +1,11 @@
+(set-logic QF_NRA)
+(set-option :algebraic.factor true)
+(set-option :algebraic.zero_accuracy 12)
+(set-option :algebraic.factor_max_prime 23)
+
+(declare-fun u () Real)
+(declare-fun v () Real)
+(assert (and (= (+ (* u u) 3) (* 7 v)) (<= (log u) v)))
+(assert (or (> (* v v) u) (= (exp v) (sqrt u))))
+(assert (not (= (* 3.14 u) (tan v))))
+(check-sat)

@@ -1,0 +1,11 @@
+(set-logic QF_BV)
+(set-option :parallel.enable true)
+(set-option :parallel.simplify.max_conflicts 5000)
+(set-option :parallel.conquer.backtrack_frequency 15)
+
+(declare-fun p () (_ BitVec 16))
+(declare-fun q () (_ BitVec 16))
+(assert (bvand (bvshl p #x0003) q) (bvor #x0001FF00 p))
+(assert (bvuge (bvmul p q) #x0000FFFF))
+(assert (not (bvslt (bvadd q p) (bvxor p q))))
+(check-sat)

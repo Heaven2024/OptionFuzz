@@ -1,0 +1,11 @@
+(set-option :re-elim agg)
+(set-option :strings-exp true)
+(set-option :strings-fmf true)
+(set-logic QF_SLIA)
+(declare-fun s () String)
+(declare-fun t () String)
+
+(assert (= t (str.replace_re s (re.+ (re.range "0" "9")) (str.++ "NUM" (str.from_int (str.to_int (str.substr s (str.indexof s "0" 0) 2)))))))
+(assert (= (str.len s) (+ (str.len t) 1)))
+(check-sat)
+(get-model)

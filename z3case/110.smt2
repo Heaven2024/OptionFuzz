@@ -1,0 +1,12 @@
+(set-logic QF_LIA)
+(set-option :nnf.max_memory 2048)
+(set-option :nnf.mode quantifiers)
+(set-option :nnf.sk_hack true)
+
+(declare-fun x () Int)
+(declare-fun y () Int)
+(declare-fun z () Int)
+(assert (forall ((n Int)) (=> (> n 0) (exists ((m Int)) (< m n)))))
+(assert (or (and (> x y) (< y z)) (=> z x)))
+(assert (not (and (exists ((m Int)) (= x m)) (forall ((n Int)) (< n y)))))
+(check-sat)

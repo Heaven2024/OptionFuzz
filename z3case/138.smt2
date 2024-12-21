@@ -1,0 +1,13 @@
+(set-logic QF_NRA)
+(set-option :nlsat.check_lemmas false)
+(set-option :nlsat.simplify_conflicts false)
+(set-option :nlsat.minimize_conflicts false)
+(set-option :nlsat.max_conflicts 1500)
+
+(declare-fun u () Real)
+(declare-fun v () Real)
+(declare-fun w () Real)
+(assert (=> (<= (* u u) v) (= w (sin v))))
+(assert (or (and (>= w u) (> v v)) (< u w)))
+(assert (not (and (<= (exp w) u) (> v w))))
+(check-sat)

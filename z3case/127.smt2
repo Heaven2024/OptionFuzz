@@ -1,0 +1,12 @@
+(set-logic QF_NRA)
+(set-option :nlsat.lazy 1)
+(set-option :nlsat.log_lemmas true)
+(set-option :nlsat.max_memory 2048)
+(set-option :nlsat.reorder false)
+
+(declare-fun m () Real)
+(declare-fun n () Real)
+(assert (= (+ (sin m) (cos n)) (* m n)))
+(assert (or (>= n m) (> (tan n) (exp m))))
+(assert (not (= m n)))
+(check-sat)

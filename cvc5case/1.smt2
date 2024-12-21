@@ -1,0 +1,8 @@
+(set-option :solve-real-as-int true)
+(set-logic QF_NRA)
+(declare-fun x () Real)
+(declare-fun y () Real)
+(assert (= (* x x x) (+ y y)))  
+(assert (> x 2.0))
+(assert (< y 10.0))
+(check-sat)

@@ -1,0 +1,12 @@
+(set-logic QF_NRA)
+(set-option :algebraic.factor_num_primes 2)
+(set-option :algebraic.factor_search_size 3000)
+(set-option :algebraic.min_mag 24)
+
+(declare-fun m () Real)
+(declare-fun n () Real)
+(declare-fun o () Real)
+(assert (= (+ (sin m) (cos n)) o))
+(assert (and (<= m n) (>= o m)))
+(assert (or (not (and > (sqrt m) (exp n))) (= n o)))
+(check-sat)

@@ -1,0 +1,10 @@
+(set-logic QF_FP) 
+(set-option :pp.fp_real_literals true)
+(set-option :pp.single_line true)
+
+(declare-fun u () Real)
+(declare-fun v () Real)
+(assert (= u (/ 3.5 v)))
+(assert (> u (* v v)))
+(assert (< (+ u v) 50.0))
+(check-sat)

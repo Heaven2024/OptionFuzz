@@ -1,0 +1,6 @@
+(set-logic ALL)
+(declare-const x7 Int)
+(declare-const x Bool)
+(declare-fun s () Real)
+(assert (or x (< 1 (+ s (/ x7 1) (/ (to_int (* s (/ s (+ s (* s (ite false 0.0 (/ 0.0 (* s s)))))))) 1)))))
+(check-sat)

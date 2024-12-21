@@ -1,0 +1,11 @@
+(set-logic QF_FP)
+(set-option :opt.maxsat_engine wmax)
+(set-option :opt.timeout 5000)
+(set-option :opt.rc2.totalizer false)
+
+(declare-fun x () Real)
+(declare-fun z () Real)
+(assert (>= (fp.abs x) (fp.div_RNE z x)))
+(assert (< (+ z x) 100.0))
+(assert (not (= z (fp.mul_RNE x x))))
+(check-sat)

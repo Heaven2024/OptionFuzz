@@ -1,0 +1,15 @@
+(set-logic HORN)
+(set-option :fp.datalog.compile_with_widening true)
+(set-option :fp.datalog.default_relation external_relation)
+(set-option :fp.spacer.q3 true)
+(set-option :fp.spacer.q3.instantiate false)
+(set-option :fp.spacer.q3.use_qgen true)
+
+(declare-rel A (Int Int))
+(declare-rel B (Int))
+(declare-var u Int)
+(declare-var v Int)
+
+(rule (=> (A u v) (B (+ u v))))
+(rule (=> (and (B u) (> u 0)) (A (mod u 5) u)))
+(query A :print-answer true)

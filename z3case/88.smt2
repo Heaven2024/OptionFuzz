@@ -1,0 +1,11 @@
+(set-logic QF_LIA)
+(set-option :opt.incremental true)
+(set-option :opt.enable_sat true)
+(set-option :opt.elim_01 false)
+
+(declare-fun x () Int)
+(declare-fun y () Int)
+(assert (> x 10))
+(assert (< y 20))
+(assert (= (+ x y) 25))
+(check-sat)

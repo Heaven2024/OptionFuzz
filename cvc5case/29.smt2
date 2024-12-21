@@ -1,0 +1,12 @@
+
+(set-logic QF_SLIA)
+(declare-fun s () String)
+(declare-fun t () String)
+(assert (str.in_re s (re.inter (re.* (re.union (str.to_re "a") (str.to_re "b")))
+                               (re.* (re.union (str.to_re "b") (str.to_re "c"))))))
+(assert (str.in_re t (re.comp (re.* (str.to_re "b")))))
+(assert (= (str.++ s t) (str.++ t s)))
+(assert (> (str.len s) 5))
+(assert (< (str.len t) 3))
+(check-sat)
+(get-model)

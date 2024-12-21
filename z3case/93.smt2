@@ -1,0 +1,13 @@
+(set-logic QF_LIA)
+(set-option :opt.enable_sls true)
+(set-option :opt.dump_benchmarks true)
+(set-option :opt.lns_conflicts 1500)
+
+(declare-fun x () Int)
+(declare-fun y () Int)
+(declare-fun z () Int)
+(assert (and (>= x 0) (<= x 10)))
+(assert (= (+ (* 2 y) z) 30))
+(assert (or (mod x 3) (= y (div z 2))))
+(assert (> (* x y) z))
+(check-sat)

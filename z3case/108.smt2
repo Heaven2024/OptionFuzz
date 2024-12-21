@@ -1,0 +1,11 @@
+(set-logic QF_BV)
+(set-option :parallel.simplify.restart.max 4000)
+(set-option :parallel.conquer.batch_size 100)
+(set-option :parallel.conquer.restart.max 6)
+
+(declare-fun u () (_ BitVec 256))
+(declare-fun v () (_ BitVec 256))
+(assert (bvuge (bvadd u v) (bvmul v #x0001000100010001)))
+(assert (or (bvuge v u) (bvslt (bvadd #xFFFFFFFFFFFFFFFF u) v)))
+(assert (bvsle (bvnand u v) u))
+(check-sat)

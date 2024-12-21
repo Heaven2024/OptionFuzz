@@ -1,0 +1,12 @@
+(set-logic QF_NRA)
+(set-option :nlsat.lazy 4)
+(set-option :nlsat.log_lemmas true)
+(set-option :nlsat.shuffle_vars true)
+
+(declare-fun m () Real)
+(declare-fun n () Real)
+(declare-fun o () Real)
+(assert (xor (> m n) (< o m)))
+(assert (not (= (+ n o) (* m m))))
+(assert (or (>= (tan o) (exp n)) (<= (sqrt m) n)))
+(check-sat)

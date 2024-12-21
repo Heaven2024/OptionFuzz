@@ -1,0 +1,13 @@
+(set-logic QF_NRA)
+(set-option :nlsat.check_lemmas true)
+(set-option :nlsat.factor true)
+(set-option :nlsat.lazy 1)
+(set-option :nlsat.seed 99)
+
+(declare-fun x () Real)
+(declare-fun y () Real)
+(declare-fun z () Real)
+(assert (= (* x x) (+ y z)))
+(assert (or (> (* y z) x) (<= (sin x) (cos y))))
+(assert (not (and (< z y) (= x z))))
+(check-sat)

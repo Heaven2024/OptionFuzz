@@ -1,0 +1,12 @@
+(set-logic QF_LRA)
+(set-option :opt.pb.compile_equality true)
+(set-option :opt.elim_01 true)
+(set-option :opt.maxres.wmax true)
+
+(declare-fun a () Real)
+(declare-fun b () Real)
+(assert (< (* 1.5 a) b))
+(assert (>= b (+ a 10.0)))
+(assert (or (= a 3.5) (and (> b 20.0) (<= a b))))
+(assert (not (= a b)))
+(check-sat)

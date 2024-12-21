@@ -1,0 +1,10 @@
+(set-logic QF_UF)
+(set-option :nnf.mode skolem)
+(set-option :nnf.sk_hack false)
+
+(declare-fun f (Bool Bool) Bool)
+(declare-fun g (Int Int) Int)
+(assert (forall ((x Bool)) (=> x (exists ((y Bool)) (f x y)))))
+(assert (or (forall ((a Int) (b Int)) (and (> a 10) (> b 5))), (f (= a 3) (= b 4))))
+(assert (not (exists ((s Bool) (t Bool)) (and (f s t) (not (f t s))))))
+(check-sat)

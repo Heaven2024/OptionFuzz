@@ -1,0 +1,11 @@
+
+(set-logic UFLIA)
+(declare-sort S 0)
+(declare-fun f (S Int) S)
+(declare-fun a () S)
+(declare-fun b () S)
+(assert (forall ((x S) (i Int)) (=> (and (>= i 0) (< i 5)) (not (= x (f x i))))))
+(assert (exists ((j Int)) (and (>= j 0) (< j 5) (= a (f b j)))))
+(assert (forall ((x S) (y S)) (=> (not (= x y)) (exists ((k Int)) (and (>= k 0) (< k 5) (= y (f x k)))))))
+(check-sat)
+(get-model)

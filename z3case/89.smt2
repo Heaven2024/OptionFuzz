@@ -1,0 +1,11 @@
+(set-logic QF_LRA)
+(set-option :opt.maxlex.enable false)
+(set-option :opt.enable_lns true)
+(set-option :opt.dump_models true)
+
+(declare-fun a () Real)
+(declare-fun b () Real)
+(assert (>= (* 2.5 a) b))
+(assert (< a 100.0))
+(assert (not (<= b 50.0)))
+(check-sat)

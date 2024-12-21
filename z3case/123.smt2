@@ -1,0 +1,12 @@
+(set-logic QF_NRA)
+(set-option :rcf.lazy_algebraic_normalization false)
+(set-option :rcf.inf_precision 22)
+(set-option :rcf.use_prem false)
+
+(declare-fun m () Real)
+(declare-fun n () Real)
+(declare-fun o () Real)
+(assert (= (sin m) (+ n (* 0.5 o))))
+(assert (or (<= (exp n) (log o)) (> o m)))
+(assert (not (and (>= m n) (= (cos o) m))))
+(check-sat)

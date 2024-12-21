@@ -1,0 +1,11 @@
+(set-logic QF_BV)
+(set-option :parallel.conquer.backtrack_frequency 5)
+(set-option :parallel.conquer.batch_size 150)
+(set-option :parallel.simplify.restart.max 3000)
+
+(declare-fun m () (_ BitVec 128))
+(declare-fun n () (_ BitVec 128))
+(assert (bvsle (bvlshr m #x04) n))
+(assert (bvnand m n) (bvnot m))
+(assert (bvsgt (bvmul m n) #x0000000000000010))
+(check-sat)

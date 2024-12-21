@@ -1,0 +1,11 @@
+(set-logic QF_UF)
+(set-option :opt.maxres.add_upper_bound_block false)
+(set-option :opt.priority pareto)
+(set-option :opt.maxres.max_num_cores 100)
+
+(declare-fun p () Bool)
+(declare-fun q () Bool)
+(assert (or p q))
+(assert (=> p (not q)))
+(assert (xor p q))
+(check-sat)

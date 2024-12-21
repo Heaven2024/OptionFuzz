@@ -1,0 +1,15 @@
+(set-logic QF_FP)
+(set-option :bmc.linear_unrolling_depth 30)
+(set-option :datalog.compile_with_widening true)
+(set-option :datalog.default_relation "external_relation")
+(set-option :datalog.default_table "sparse")
+
+(declare-fun p (Real Real) Real)
+(declare-fun q (Real Real) Real)
+(declare-fun r (Real Real) Real)
+
+(assert (= (p 2.0 3.0) (+ (q 1.0 1.0) 5.0)))
+(assert (exists ((x Real)) (and (> x 0.0) (= (p x 3.0) 6.0))))
+(assert (forall ((t Real)) (=> (> t 0.0) (exists ((u Real)) (> u t)))))
+(check-sat)
+(get-model)

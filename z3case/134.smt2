@@ -1,0 +1,13 @@
+(set-logic QF_NRA)
+(set-option :nlsat.factor false)
+(set-option :nlsat.inline_vars false)
+(set-option :nlsat.lazy 5)
+(set-option :nlsat.rand 44)
+
+(declare-fun p () Real)
+(declare-fun q () Real)
+(declare-fun r () Real)
+(assert (or (= (sin p) r) (and (> q r) (< p q))))
+(assert (not (= (* q q) (+ r p))))
+(assert (>= (tan p) (log q)))
+(check-sat)

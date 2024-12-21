@@ -1,0 +1,15 @@
+
+(set-logic QF_SLIA)
+(declare-fun s () String)
+(declare-fun t () String)
+(assert (str.in_re s (re.++ (re.+ (re.range "A" "Z"))
+                            (re.+ (re.range "0" "9"))
+                            (re.+ (re.range "a" "z")))))
+(assert (= t (str.replace_re s 
+                             (re.++ (re.+ (re.range "A" "Z")) (re.+ (re.range "0" "9")))
+                             (str.++ (str.at s 0) (str.substr s (str.indexof s "0" 0) 2)))))
+(assert (= (str.len s) (+ (str.len t) 3)))
+(assert (str.prefixof (str.at s 0) t))
+(assert (str.suffixof (str.substr s (- (str.len s) 3) 3) t))
+(check-sat)
+(get-model)
